@@ -21,8 +21,9 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *           ┌───┐                   ┌───┐
       *           │   ├───┐           ┌───┤ESC│
       *           └───┤ _ ├───┐   ┌───┤TAB├───┘
-      *               └───┤SPC│   │ENT├───┘
-      *                   └───┘   └───┘
+      *            NUM└───┤SPC│   │ENT├───┘FUN
+      *                EXT└───┘   └───┘EXT
+      *                    SYM     SYM
       */
     [_COLMAKDH] = LAYOUT_split_3x5_3(
         KC_Q,  KC_W,  KC_F,  KC_P,  KC_B,                                   KC_J,  KC_L,  KC_U,  KC_Y,  KC_QUOT,
@@ -45,10 +46,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                   └───┘   └───┘
       */
     [_EXTEND] = LAYOUT_split_3x5_3(
-        KC_ESC,  KC_WBAK,  KC_FIND,  KC_WFWD,  KC_INS,                                 KC_PGUP,  KC_HOME,  KC_UP,  KC_END,   CW_TOGG,
-        OS_LGUI,  OS_LALT,  OS_LSFT,  OS_LCTL,  OS_RALT,                               KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT,   KC_DEL,
-        C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  KC_LGUI,                               _______,  KC_BSPC,  _______,  _______,   KC_PSCR,
-        _______,  _______,  _______,                                                   _______,  _______,  _______
+        KC_ESC,  KC_WBAK,  KC_FIND,  KC_WFWD,   KC_INS,                     KC_PGUP,  KC_HOME,  KC_UP,    KC_END,   CW_TOGG,
+        OS_LGUI,  OS_LALT,  OS_LSFT,  OS_LCTL,  OS_RALT,                    KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_DEL,
+        C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  KC_LGUI,                    _______,  KC_BSPC,  _______,  _______,  KC_PSCR,
+        _______,  _______,  _______,                                        _______,  _______,  _______
     ),
     /*  _FUNCTION
       * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
@@ -65,10 +66,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                   └───┘   └───┘
       */
     [_FUNCTION] = LAYOUT_split_3x5_3(
-      KC_MSTP,  KC_MRWD,  KC_MPLY,  KC_MFFD,  KC_BRIU,                               KC_F12,  KC_F7,  KC_F8,  KC_F9,   _______,
-      OS_LGUI,  OS_LALT,  OS_LSFT,  OS_LCTL,  KC_BRID,                               KC_F11,  KC_F4,  KC_F5,  KC_F6,   _______,
-      KC_MUTE,  KC_VOLD,  LCS(KC_C),  LCS(KC_V),  KC_VOLU,                               KC_F10,  KC_F1,  KC_F2,  KC_F3,   _______,
-      _______,  _______,  _______,                                                   _______,  _______,  _______
+      KC_MSTP,  KC_MRWD,  KC_MPLY,    KC_MFFD,    KC_BRIU,                  KC_F12,  KC_F7,  KC_F8,  KC_F9,  _______,
+      OS_LGUI,  OS_LALT,  OS_LSFT,    OS_LCTL,    KC_BRID,                  KC_F11,  KC_F4,  KC_F5,  KC_F6,  _______,
+      KC_MUTE,  KC_VOLD,  LCS(KC_C),  LCS(KC_V),  KC_VOLU,                  KC_F10,  KC_F1,  KC_F2,  KC_F3,  _______,
+      _______,  _______,  _______,                                          _______,  _______,  _______
     ),
     /*  _NUMBERS
       * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
@@ -85,10 +86,10 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       *                   └───┘   └───┘
       */
     [_NUMBERS] = LAYOUT_split_3x5_3(
-      _______,  _______,  _______,  _______,  KC_NUM,                                KC_EQUAL,  KC_7,  KC_8,  KC_9,   KC_PLUS,
-      OS_LGUI,  OS_LALT,  OS_LSFT,  OS_LCTL,  OS_RALT,                               KC_ASTR,   KC_4,  KC_5,  KC_6,   KC_MINS,
-      _______,  _______,  _______,  KC_BSPC,  _______,                               KC_0,      KC_1,  KC_2,  KC_3,   KC_SLSH,
-      _______,  _______,  _______,                                                   _______,  KC_DOT,  _______
+      _______,  _______,  _______,  _______,  KC_NUM,                       KC_EQUAL,  KC_7,  KC_8,  KC_9,  KC_PLUS,
+      OS_LGUI,  OS_LALT,  OS_LSFT,  OS_LCTL,  OS_RALT,                      KC_ASTR,   KC_4,  KC_5,  KC_6,  KC_MINS,
+      _______,  _______,  _______,  KC_BSPC,  _______,                      KC_0,      KC_1,  KC_2,  KC_3,  KC_SLSH,
+      _______,  _______,  _______,                                          _______,  KC_DOT,  _______
     ),
     /*  _SYMBOLS
      * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
@@ -105,46 +106,26 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      *                   └───┘   └───┘
      */
     [_SYMBOLS] = LAYOUT_split_3x5_3(
-      KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,                               KC_EQUAL,  KC_GRV,   KC_COLN,  KC_SCLN,   KC_PLUS,
-      OS_LGUI,  OS_LALT,  OS_LSFT,  OS_LCTL,  KC_CIRC,                               KC_ASTR,   KC_LPRN,  KC_LCBR,  KC_LBRC,   KC_MINS,
-      _______,  _______,  KC_BSLS,  KC_PIPE,  KC_AMPR,                               KC_TILD,   KC_RPRN,  KC_RCBR,  KC_RBRC,   _______,
-      _______,  _______,  _______,                                                   _______,   _______,  _______
+      KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,                      KC_EQUAL,  KC_GRV,   KC_COLN,  KC_SCLN,  KC_PLUS,
+      OS_LGUI,  OS_LALT,  OS_LSFT,  OS_LCTL,  KC_CIRC,                      KC_ASTR,   KC_LPRN,  KC_LCBR,  KC_LBRC,  KC_MINS,
+      _______,  _______,  KC_BSLS,  KC_PIPE,  KC_AMPR,                      KC_TILD,   KC_RPRN,  KC_RCBR,  KC_RBRC,  _______,
+      _______,  _______,  _______,                                          _______,   _______,  _______
     ),
     /*  _GAMING
      *
      */
     [_GAMING] = LAYOUT_split_3x5_3(
-      _______,  _______,  _______,  _______,  _______,                               _______,  _______,  _______,  _______,   _______,
-      _______,  _______,  _______,  _______,  _______,                               _______,  _______,  _______,  _______,   _______,
-      _______,  _______,  _______,  _______,  _______,                               _______,  _______,  _______,  _______,   _______,
-      _______,  _______,  _______,                                                   _______,  _______,  _______
+      _______,  _______,  _______,  _______,  _______,                      _______,  _______,  _______,  _______,  _______,
+      _______,  _______,  _______,  _______,  _______,                      _______,  _______,  _______,  _______,  _______,
+      _______,  _______,  _______,  _______,  _______,                      _______,  _______,  _______,  _______,  _______,
+      _______,  _______,  _______,                                          _______,  _______,  _______
     ),
     [_GAMING_ARROWS] = LAYOUT_split_3x5_3(
-      _______,  _______,  _______,  _______,  _______,                               _______,  _______,  _______,  _______,   _______,
-      _______,  _______,  _______,  _______,  _______,                               _______,  _______,  _______,  _______,   _______,
-      _______,  _______,  _______,  _______,  _______,                               _______,  _______,  _______,  _______,   _______,
-      _______,  _______,  _______,                                                   _______,  _______,  _______
+      _______,  _______,  _______,  _______,  _______,                      _______,  _______,  _______,  _______,  _______,
+      _______,  _______,  _______,  _______,  _______,                      _______,  _______,  _______,  _______,  _______,
+      _______,  _______,  _______,  _______,  _______,                      _______,  _______,  _______,  _______,  _______,
+      _______,  _______,  _______,                                          _______,  _______,  _______
     )
-};
-
-// This changes functionality of Shifting these keys
-const key_override_t colon_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COLN, KC_SCLN, ~_COLMAKDH);
-const key_override_t comma_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_COMMA, KC_LPRN, ~_COLMAKDH);
-const key_override_t dot_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_DOT, KC_RPRN, ~_COLMAKDH);
-const key_override_t slash_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_SLASH, KC_BACKSLASH, ~_COLMAKDH);
-const key_override_t numbers_slash_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_PSLS, KC_KP_ASTERISK, ~_NUMBERS);
-const key_override_t numbers_plus_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_PPLS, KC_EQUAL, ~_NUMBERS);
-const key_override_t delete_key_override = ko_make_with_layers(MOD_MASK_SHIFT, KC_BSPC, KC_DELETE, ~_COLMAKDH | ~_FUNCTION | ~_EXTEND | ~_NUMBERS);
-
-// This globally defines all key overrides to be used
-const key_override_t *key_overrides[] = {
-	&colon_key_override,
-	&comma_key_override,
-	&dot_key_override,
-	&slash_key_override,
-	&numbers_slash_key_override,
-	&numbers_plus_key_override,
-	&delete_key_override,
 };
 
 // This is combo definitions
