@@ -19,17 +19,17 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       * │ Z │ X │ C │ D │ V │       │ K │ H │, <│. >│/ ?│
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
-      *           │   ├───┐           ┌───┤ESC│
-      *           └───┤ _ ├───┐   ┌───┤TAB├───┘
-      *            NUM└───┤SPC│   │ENT├───┘FUN
-      *                EXT└───┘   └───┘EXT
-      *                    SYM     SYM
+      *           │ _ ├───┐           ┌───┤ESC│
+      *           └───┤   ├───┐   ┌───┤TAB├───┘
+      *               └───┤SPC│   │ENT├───┘
+      *                EXT└───┘   └───┘SYM
+      *                    NUM     FUN
       */
     [_COLMAKDH] = LAYOUT_split_3x5_3(
         KC_Q,  KC_W,  KC_F,  KC_P,  KC_B,                                   KC_J,  KC_L,  KC_U,  KC_Y,  KC_QUOT,
-        KC_A,  KC_R,  KC_S,  KC_T,  KC_G,                                   KC_M,  KC_N,  KC_E,  KC_I,  KC_O,
+        MT(MOD_LGUI, KC_A),  MT(MOD_LALT, KC_R),  MT(MOD_LSFT, KC_S),  MT(MOD_LCTL, KC_T),  KC_G,         KC_M, MT(MOD_LCTL, KC_N),  MT(MOD_LSFT, KC_E),  MT(MOD_LATL, KC_I),  MT(MOD_LGUI, KC_O),
         KC_Z,  KC_X,  KC_C,  KC_D,  KC_V,                                   KC_K,  KC_H,  KC_COMM,  KC_DOT,  KC_SLSH,
-        LT(_NUMBERS),  LT(_EXTEND, KC_UNDS),  LT(_SYMBOLS, KC_SPC),         LT(_SYMBOLS, KC_ENTER), LT(_EXTEND, KC_TAB),  LT(_FUNCTION, KC_ESC)
+        KC_UNDS,  LT(_EXTEND, _______),  LT(_NUMBERS, KC_SPC),         LT(_SYMBOLS, KC_ENTER), LT(_FUNCTION, KC_TAB),  KC_ESC
     ),
     /*  _EXTEND
       * ┌───┬───┬───┬───┬───┐       ┌───┬───┬───┬───┬───┐
@@ -41,13 +41,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
       *           │   ├───┐           ┌───┤   │
-      *           └───┤-X-├───┐   ┌───┤-X-├───┘
+      *           └───┤-X-├───┐   ┌───┤   ├───┘
       *               └───┤   │   │   ├───┘
       *                   └───┘   └───┘
       */
     [_EXTEND] = LAYOUT_split_3x5_3(
         KC_ESC,  KC_WBAK,  KC_FIND,  KC_WFWD,   KC_INS,                     KC_PGUP,  KC_HOME,  KC_UP,    KC_END,   CW_TOGG,
-        OS_LGUI,  OS_LALT,  OS_LSFT,  OS_LCTL,  OS_RALT,                    KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_DEL,
+        OSM(MOD_LGUI),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_RALT),                    KC_PGDN,  KC_LEFT,  KC_DOWN,  KC_RGHT,  KC_DEL,
         C(KC_Z),  C(KC_X),  C(KC_C),  C(KC_V),  KC_LGUI,                    _______,  KC_BSPC,  _______,  _______,  KC_PSCR,
         _______,  _______,  _______,                                        _______,  _______,  _______
     ),
@@ -60,14 +60,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       * │MUT│vDN│CSc│CSv│vUP│       │F10│ F1│ F2│ F3│   │
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
-      *           │   ├───┐           ┌───┤-X-│
+      *           │   ├───┐           ┌───┤   │
       *           └───┤   ├───┐   ┌───┤   ├───┘
-      *               └───┤   │   │   ├───┘
+      *               └───┤   │   │-X-├───┘
       *                   └───┘   └───┘
       */
     [_FUNCTION] = LAYOUT_split_3x5_3(
       KC_MSTP,  KC_MRWD,  KC_MPLY,    KC_MFFD,    KC_BRIU,                  KC_F12,  KC_F7,  KC_F8,  KC_F9,  _______,
-      OS_LGUI,  OS_LALT,  OS_LSFT,    OS_LCTL,    KC_BRID,                  KC_F11,  KC_F4,  KC_F5,  KC_F6,  _______,
+      OSM(MOD_LGUI),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LCTL),    KC_BRID,                  KC_F11,  KC_F4,  KC_F5,  KC_F6,  _______,
       KC_MUTE,  KC_VOLD,  LCS(KC_C),  LCS(KC_V),  KC_VOLU,                  KC_F10,  KC_F1,  KC_F2,  KC_F3,  _______,
       _______,  _______,  _______,                                          _______,  _______,  _______
     ),
@@ -80,14 +80,14 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
       * │   │   │   │bSp│   │       │ 0 │ 1 │ 2 │ 3 │ / │
       * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
       *           ┌───┐                   ┌───┐
-      *           │-X-├───┐           ┌───┤   │
-      *           └───┤   ├───┐   ┌───┤ . ├───┘
+      *           │   ├───┐           ┌───┤   │
+      *           └───┤-X-├───┐   ┌───┤ . ├───┘
       *               └───┤   │   │   ├───┘
       *                   └───┘   └───┘
       */
     [_NUMBERS] = LAYOUT_split_3x5_3(
       _______,  _______,  _______,  _______,  KC_NUM,                       KC_EQUAL,  KC_7,  KC_8,  KC_9,  KC_PLUS,
-      OS_LGUI,  OS_LALT,  OS_LSFT,  OS_LCTL,  OS_RALT,                      KC_ASTR,   KC_4,  KC_5,  KC_6,  KC_MINS,
+      OSM(MOD_LGUI),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LCTL),  OSM(MOD_RALT),                      KC_ASTR,   KC_4,  KC_5,  KC_6,  KC_MINS,
       _______,  _______,  _______,  KC_BSPC,  _______,                      KC_0,      KC_1,  KC_2,  KC_3,  KC_SLSH,
       _______,  _______,  _______,                                          _______,  KC_DOT,  _______
     ),
@@ -101,13 +101,13 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * └───┴───┴───┴───┴───┘       └───┴───┴───┴───┴───┘
      *           ┌───┐                   ┌───┐
      *           │   ├───┐           ┌───┤   │
-     *           └───┤   ├───┐   ┌───┤   ├───┘
-     *               └───┤-X-│   │-X-├───┘
+     *           └───┤   ├───┐   ┌───┤-X-├───┘
+     *               └───┤   │   │   ├───┘
      *                   └───┘   └───┘
      */
     [_SYMBOLS] = LAYOUT_split_3x5_3(
       KC_EXLM,  KC_AT,    KC_HASH,  KC_DLR,   KC_PERC,                      KC_EQUAL,  KC_GRV,   KC_COLN,  KC_SCLN,  KC_PLUS,
-      OS_LGUI,  OS_LALT,  OS_LSFT,  OS_LCTL,  KC_CIRC,                      KC_ASTR,   KC_LPRN,  KC_LCBR,  KC_LBRC,  KC_MINS,
+      OSM(MOD_LGUI),  OSM(MOD_LALT),  OSM(MOD_LSFT),  OSM(MOD_LCTL),  KC_CIRC,                      KC_ASTR,   KC_LPRN,  KC_LCBR,  KC_LBRC,  KC_MINS,
       _______,  _______,  KC_BSLS,  KC_PIPE,  KC_AMPR,                      KC_TILD,   KC_RPRN,  KC_RCBR,  KC_RBRC,  _______,
       _______,  _______,  _______,                                          _______,   _______,  _______
     ),
